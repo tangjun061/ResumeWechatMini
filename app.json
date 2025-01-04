@@ -1,0 +1,14 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/result/result"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "AI简历优化大师",
+        "navigationBarTextStyle": "black"
+    },
+    "debug": false,
+    "lazyCodeLoading": "requiredComponents"
+}

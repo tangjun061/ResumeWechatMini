@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="upload-section">
+        <button class="upload-btn" bindtap="chooseFile">
+            {{resumeFile ? '重新上传简历' : '上传简历文件'}}
+        </button>
+        <view wx:if="{{resumeFile}}" class="file-name">
+            已选择文件: {{resumeFile.name}}
+        </view>
+    </view>
+    
+    <view class="description-section">
+        <view class="description-title">
+            <text class="title">岗位描述</text>
+            <text class="subtitle">请输入目标岗位的职位描述，AI将根据岗位要求优化您的简历</text>
+        </view>
+        <textarea 
+            placeholder="请输入职位描述(300字以内)" 
+            maxlength="300" 
+            bindinput="onDescriptionInput"
+            value="{{jobDescription}}"
+        />
+        <view class="word-count">{{jobDescription.length}}/300</view>
+    </view>
+
+    <view class="invitation-section">
+        <input 
+            class="invitation-input"
+            placeholder="请输入邀请码"
+            value="{{invitationCode}}"
+            bindinput="onInvitationInput"
+        />
+    </view>
+
+    <button 
+        class="optimize-btn {{canOptimize ? '' : 'disabled'}}" 
+        disabled="{{!canOptimize}}"
+        bindtap="handleOptimize"
+    >
+        AI优化简历
+    </button>
+</view> 

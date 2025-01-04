@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="header">
+    <button class="back-btn" bindtap="handleBack">后退</button>
+    <button class="download-btn" bindtap="handleDownload">
+      下载优化后pdf简历
+    </button>
+  </view>
+
+  <view class="tabs">
+    <view 
+      class="tab-item {{activeTab === 'resume' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="resume"
+    >
+      优化后的简历
+    </view>
+    <view 
+      class="tab-item {{activeTab === 'report' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="report"
+    >
+      优化报告
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="content-section {{activeTab === 'resume' ? 'show' : 'hide'}}">
+      <text class="content-text">{{optimizedContent}}</text>
+    </view>
+    
+    <view class="content-section {{activeTab === 'report' ? 'show' : 'hide'}}">
+      <text class="content-text">{{analysisReport}}</text>
+    </view>
+  </view>
+</view> 

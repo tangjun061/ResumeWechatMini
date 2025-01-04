@@ -1,0 +1,6 @@
+{
+  "name": "resume-optimizer",
+  "version": "1.0.0",
+  "description": "Resume optimization mini program",
+  "main": "app.js"
+}
