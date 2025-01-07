@@ -1,12 +1,24 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
   padding: 20px;
+  animation: slideIn 0.5s ease-out;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .filename-input {
@@ -29,22 +41,28 @@
 
 .tabs {
   display: flex;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #ddd;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #e8e8e8;
+  background: white;
+  border-radius: 8px 8px 0 0;
+  padding: 0 16px;
+  position: relative;
 }
 
 .tab-item {
   flex: 1;
   text-align: center;
-  padding: 8px 0;
+  padding: 12px 0;
   font-size: 14px;
-  color: #666;
+  color: #7f8c8d;
   position: relative;
   transition: all 0.3s;
+  margin: 0 12px;
+  cursor: pointer;
 }
 
 .tab-item.active {
-  color: #07c160;
+  color: #1890ff;
   font-weight: bold;
 }
 
@@ -55,23 +73,29 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: #07c160;
+  background: #1890ff;
 }
 
 .content {
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
   min-height: 300px;
-  background: #fff;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .content-section {
   display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
 }
 
 .content-section.show {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .content-text {
@@ -79,15 +103,44 @@
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-all;
+  color: #2c3e50;
+  padding: 4px 8px;
 }
 
 .back-btn, .download-btn {
-  min-width: 80px;
+  min-width: 120px;
   font-size: 14px;
-  padding: 6px 12px;
+  padding: 8px 16px;
   line-height: 1.5;
+  background: #1890ff;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.1);
 }
 
 .header button {
   margin: 0;
+}
+
+.tab-hover {
+  opacity: 0.8;
+  background: rgba(24, 144, 255, 0.05);
+}
+
+.download-btn {
+  min-width: 120px;
+  font-size: 14px;
+  padding: 8px 16px;
+  line-height: 1.5;
+  background: #1890ff;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(24, 144, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.download-btn:disabled {
+  opacity: 0.7;
+  background: #d9d9d9;
+  box-shadow: none;
 } 

@@ -1,8 +1,10 @@
 <view class="container">
   <view class="header">
     <button class="back-btn" bindtap="handleBack">后退</button>
-    <button class="download-btn" bindtap="handleDownload">
-      下载优化后pdf简历
+    <button class="download-btn" bindtap="handleDownload" disabled="{{isDownloading}}">
+      <view class="btn-content {{isDownloading ? 'loading' : ''}}">
+        下载优化后pdf简历
+      </view>
     </button>
   </view>
 
@@ -11,6 +13,7 @@
       class="tab-item {{activeTab === 'resume' ? 'active' : ''}}" 
       bindtap="switchTab" 
       data-tab="resume"
+      hover-class="tab-hover"
     >
       优化后的简历
     </view>
@@ -18,6 +21,7 @@
       class="tab-item {{activeTab === 'report' ? 'active' : ''}}" 
       bindtap="switchTab" 
       data-tab="report"
+      hover-class="tab-hover"
     >
       优化报告
     </view>

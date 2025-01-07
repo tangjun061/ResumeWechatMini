@@ -1,14 +1,19 @@
-<view class="container">
+<view class="container {{isLoading ? '' : 'fade-in'}}">
     <view class="upload-section">
         <button class="upload-btn" bindtap="chooseFile">
-            {{resumeFile ? '重新上传简历' : '上传简历文件'}}
+            <view class="btn-content {{isUploading ? 'loading' : ''}}">
+                <view class="btn-icon">
+                    <view class="upload-icon"></view>
+                </view>
+                {{resumeFile ? '重新上传简历' : '上传简历文件'}}
+            </view>
         </button>
-        <view wx:if="{{resumeFile}}" class="file-name">
+        <view wx:if="{{resumeFile}}" class="file-name slide-in">
             已选择文件: {{resumeFile.name}}
         </view>
     </view>
     
-    <view class="description-section">
+    <view class="description-section {{isLoading ? '' : 'slide-up'}}">
         <view class="description-title">
             <text class="title">岗位描述</text>
             <text class="subtitle">请输入目标岗位的职位描述，AI将根据岗位要求优化您的简历</text>
@@ -19,10 +24,12 @@
             bindinput="onDescriptionInput"
             value="{{jobDescription}}"
         />
-        <view class="word-count">{{jobDescription.length}}/300</view>
+        <view class="word-count {{jobDescription.length > 0 ? 'active' : ''}}">
+            {{jobDescription.length}}/300
+        </view>
     </view>
 
-    <view class="invitation-section">
+    <view class="invitation-section" style="display: none;">
         <input 
             class="invitation-input"
             placeholder="请输入邀请码"
@@ -32,10 +39,26 @@
     </view>
 
     <button 
-        class="optimize-btn {{canOptimize ? '' : 'disabled'}}" 
-        disabled="{{!canOptimize}}"
+        class="optimize-btn {{canOptimize ? '' : 'disabled'}} {{isLoading ? '' : 'slide-up'}} {{isOptimizing ? 'optimizing' : ''}}"
+        disabled="{{!canOptimize || isOptimizing}}"
         bindtap="handleOptimize"
     >
-        AI优化简历
+        <view class="btn-content">
+            <view class="btn-text">AI优化简历</view>
+            <view class="btn-arrow" wx:if="{{!isOptimizing}}"></view>
+        </view>
     </button>
+
+    <view wx:if="{{isOptimizing}}" class="progress-mask">
+        <view class="progress-container" catchtouchmove="true">
+            <view class="step-info">
+                <text class="step-name">{{currentStep}}</text>
+            </view>
+            <view class="step-desc">{{stepDescription}}</view>
+            <view class="progress-bar">
+                <view class="progress-stars">{{progressStars}}</view>
+                <view class="progress-text">{{progressText}}</view>
+            </view>
+        </view>
+    </view>
 </view> 

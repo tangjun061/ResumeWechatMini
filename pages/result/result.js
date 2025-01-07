@@ -5,7 +5,8 @@ Page({
         resumeId: '',
         optimizedContent: '',
         analysisReport: '',
-        activeTab: 'resume'
+        activeTab: 'resume',
+        isDownloading: false
     },
 
     onLoad(options) {
@@ -28,6 +29,10 @@ Page({
     },
 
     handleDownload() {
+        this.setData({
+            isDownloading: true
+        })
+
         wx.showLoading({
             title: '准备下载...',
             mask: true
@@ -61,7 +66,18 @@ Page({
             },
             complete: () => {
                 wx.hideLoading()
+                this.setData({
+                    isDownloading: false
+                })
             }
+        })
+    },
+
+    onShow() {
+        // 添加进入动画
+        wx.pageScrollTo({
+            scrollTop: 0,
+            duration: 300
         })
     }
 }) 

@@ -10,5 +10,6 @@
         "navigationBarTextStyle": "black"
     },
     "debug": false,
-    "lazyCodeLoading": "requiredComponents"
+    "lazyCodeLoading": "requiredComponents",
+    "entryPagePath": "pages/index/index"
 }
